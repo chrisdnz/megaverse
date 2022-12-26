@@ -9,18 +9,18 @@
  * ]} objects list with coordinates
  */
 export const createX = (startRow = 0, area = 0, matrixSize = 0) => {
-  const coords = [];
+  const coords = []
   for (let i = startRow; i <= area; i++) {
     const x1 = {
       column: i,
-      row: i,
-    };
-    const x2 = {
-      column: (matrixSize - 1) - i,
       row: i
-    };
-    coords.push(x1);
-    coords.push(x2);
+    }
+    const x2 = {
+      column: matrixSize - 1 - i,
+      row: i
+    }
+    coords.push(x1)
+    coords.push(x2)
   }
-  return coords;
-};
+  return coords
+}

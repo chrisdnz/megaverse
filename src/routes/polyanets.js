@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-import { createXPolyanets, resetPolyanets } from '../controllers/polyanets';
+import { createXPolyanets, resetPolyanets } from '../controllers/polyanets'
 
-const router = Router();
+const router = Router()
 
-router.get('/createX', createXPolyanets);
-router.delete('/reset', resetPolyanets);
+router.get('/createX', createXPolyanets)
+router.delete('/reset', resetPolyanets)
 
-export default router;
+export default router

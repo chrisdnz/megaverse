@@ -1,35 +1,35 @@
 class ApplicationError extends Error {
-  constructor(message, code, innerException) {
-    super(message);
-    this.code = code;
-    this.innerException = innerException;
-    this.loggable = true;
-    this.sendable = true;
+  constructor (message, code, innerException) {
+    super(message)
+    this.code = code
+    this.innerException = innerException
+    this.loggable = true
+    this.sendable = true
   }
 
-  isLoggable() {
-    return this.loggable || true;
+  isLoggable () {
+    return this.loggable || true
   }
 
-  isSendable() {
-    return this.sendable;
+  isSendable () {
+    return this.sendable
   }
 
-  send(send) {
-    this.sendable = send;
+  send (send) {
+    this.sendable = send
   }
 
-  getHttpStatusCode() {
-    return this.statusCode || DEFAULT_HTTP_STATUS_CODE;
+  getHttpStatusCode () {
+    return this.statusCode || DEFAULT_HTTP_STATUS_CODE
   }
 
-  getModelOut() {
-    const { code, message } = this;
+  getModelOut () {
+    const { code, message } = this
     return {
       code,
-      message,
-    };
+      message
+    }
   }
 }
 
-export default ApplicationError;
+export default ApplicationError
