@@ -1,10 +1,12 @@
 import { createX } from '../utils/createX'
+import { delay } from '../utils/delay'
 import { createPolyanet, deletePolyanet } from '../services/polyanets'
 
 const createXPolyanets = async (_, resp, next) => {
   try {
     const coordinates = createX(2, 8, 11)
-    coordinates.forEach(async coord => {
+    for (let i = 0; i < coordinates?.length; i++) {
+      const coord = coordinates[i]
       await delay(0.5)
       const apiResponse = await createPolyanet(coord)
       if (apiResponse.reason) {
@@ -16,7 +18,7 @@ const createXPolyanets = async (_, resp, next) => {
           )
         )
       }
-    })
+    }
     resp.status(200).send({
       message: 'polyanets with shape X created succesfully',
       coordinates
@@ -28,11 +30,11 @@ const createXPolyanets = async (_, resp, next) => {
 
 const resetPolyanets = async (req, resp, next) => {
   try {
-    console.log(req.body)
     const { coordinates } = req.body
 
     // Send coords to Megaverse API
-    coordinates.forEach(async coord => {
+    for (let i = 0; i < coordinates?.length; i++) {
+      const coord = coordinates[i]
       await delay(0.5)
       // Send coord to Megaverse API
       const apiResponse = await deletePolyanet(coord)
@@ -45,7 +47,7 @@ const resetPolyanets = async (req, resp, next) => {
           )
         )
       }
-    })
+    }
 
     resp.status(200).send({
       message: 'polyanets reset successfully'

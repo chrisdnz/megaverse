@@ -1,5 +1,4 @@
-  - repo: https://github.com/standard/standard
-    rev: master
-    hooks:
-      - id: standard
-      
+- repo: https://github.com/standard/standard
+  rev: master
+  hooks:
+    - id: standard

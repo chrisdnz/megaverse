@@ -1,7 +1,7 @@
 import ApplicationError from '../errors/ApplicationError'
 
 const errorHandler = (error, req, res, next) => {
-  const applicationError = error
+  let applicationError = error
   if (applicationError.stack) {
     console.error(
       'Error stack trace: ',
@@ -9,22 +9,22 @@ const errorHandler = (error, req, res, next) => {
     )
   }
 
-  if (!applicationError instanceof ApplicationError) {
+  if (!(applicationError instanceof ApplicationError)) {
     applicationError = new ApplicationError(
       applicationError.message,
       'unexpected-error',
       applicationError
     )
-  }
 
-  if (applicationError.isLoggable()) {
-    console.error(applicationError.message)
-  }
+    if (applicationError.isLoggable()) {
+      console.error(applicationError.message)
+    }
 
-  if (applicationError.isSendable()) {
-    res
-      .status(applicationError.getHttpStatusCode())
-      .send(applicationError.getModelOut())
+    if (applicationError.isSendable()) {
+      res
+        .status(applicationError.getHttpStatusCode())
+        .send(applicationError.getModelOut())
+    }
   }
 }
 

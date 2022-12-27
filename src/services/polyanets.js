@@ -15,7 +15,7 @@ export const createPolyanet = async ({ column, row }) => {
       row
     })
   }
-  console.info(`Sending row: ${coord.row} | column: ${coord.column}`)
+  console.info(`Sending row: ${row} | column: ${column}`)
   // Send data to Megaverse API
   return await (await fetch(`${config.apiUrl}/${resourceName}`, options)).json()
 }
@@ -31,7 +31,7 @@ export const deletePolyanet = async ({ column, row }) => {
       row
     })
   }
-  console.info(`Deleting row: ${coord.row} | column: ${coord.column}`)
+  console.info(`Deleting row: ${row} | column: ${column}`)
   // Send data to Megaverse API
   return await (await fetch(`${config.apiUrl}/${resourceName}`, options)).json()
 }

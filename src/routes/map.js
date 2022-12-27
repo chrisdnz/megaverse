@@ -4,6 +4,6 @@ import { createMegaverse } from '../controllers/megaverse'
 
 const router = Router()
 
-router.post('/create', createMegaverse)
+router.get('/create', createMegaverse)
 
 export default router

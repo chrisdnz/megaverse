@@ -1,4 +1,8 @@
-const resourceName = 'cometh'
+import fetch from 'node-fetch'
+
+import { config } from '../config'
+
+const resourceName = 'comeths'
 
 export const createCometh = async ({ column, row, direction }) => {
   const options = {
@@ -7,7 +11,6 @@ export const createCometh = async ({ column, row, direction }) => {
     body: JSON.stringify({
       column,
       candidateId: config.userId,
-      delay: 0,
       row,
       direction
     })
@@ -24,7 +27,6 @@ export const deleteCometh = async ({ column, row }) => {
     body: JSON.stringify({
       column,
       candidateId: config.userId,
-      delay: 0,
       row
     })
   }

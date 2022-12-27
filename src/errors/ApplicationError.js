@@ -1,10 +1,12 @@
 class ApplicationError extends Error {
+  DEFAULT_HTTP_STATUS_CODE = 500
   constructor (message, code, innerException) {
     super(message)
     this.code = code
     this.innerException = innerException
     this.loggable = true
     this.sendable = true
+    this.statusCode = this.DEFAULT_HTTP_STATUS_CODE
   }
 
   isLoggable () {
@@ -20,7 +22,7 @@ class ApplicationError extends Error {
   }
 
   getHttpStatusCode () {
-    return this.statusCode || DEFAULT_HTTP_STATUS_CODE
+    return this.statusCode || this.DEFAULT_HTTP_STATUS_CODE
   }
 
   getModelOut () {

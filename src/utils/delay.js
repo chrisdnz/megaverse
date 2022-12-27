@@ -1,1 +1,1 @@
-const delay = (seconds = 0) => setTimeout(() => {}, seconds * 1000)
+export const delay = (seconds = 0) => setTimeout(() => {}, seconds * 1000)
